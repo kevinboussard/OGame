@@ -11,7 +11,6 @@ namespace ImieApplication
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            DatabaseManager<OGamePlanet> manager = new DatabaseManager<OGamePlanet>();
-         }
+        }
     }
 }

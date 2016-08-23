@@ -20,6 +20,9 @@ namespace ImieApplication.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+
+        public System.Data.Entity.DbSet<ImieApplication.Models.OGameCoordinate> OGameCoordinates { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -29,5 +32,15 @@ namespace ImieApplication.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<ImieApplication.Models.OGameTypeBuilding> OGameTypeBuildings { get; set; }
+
+        public System.Data.Entity.DbSet<ImieApplication.Models.OGamePlanet> OGamePlanets { get; set; }
+
+        public System.Data.Entity.DbSet<ImieApplication.Models.OGameResource> OGameResources { get; set; }
+
+        public System.Data.Entity.DbSet<ImieApplication.Models.OGameFleet> OGameFleets { get; set; }
+
+        public System.Data.Entity.DbSet<ImieApplication.Models.OGameSpaceShip> OGameSpaceShips { get; set; }
     }
 }
