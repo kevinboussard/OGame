@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ImieApplication.Utils.Generator;
+using ImieApplication.Utils.Generator.Attributs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -19,8 +21,8 @@ namespace ImieApplication.Models
         #endregion
 
         #region Attributs
-            private int x;
-            private int y;
+        private int x;
+        private int y;
         #endregion
 
         #region Conctructors
@@ -31,23 +33,25 @@ namespace ImieApplication.Models
         #endregion
 
         #region Properties
-            /// <summary>
-            /// X coordinate.
-            /// </summary>
-            public int X
-            {
-                get { return x; }
-                set { x = value; }
-            }
+        /// <summary>
+        /// X coordinate.
+        /// </summary>
+        [FakerTyper(TypeEnumCustom.COORDINATE_X)]
+        public int X
+        {
+            get { return x; }
+            set { x = value; }
+        }
 
-            /// <summary>
-            /// Y coordinate.
-            /// </summary>
-            public int Y
-            {
-                get { return y; }
-                set { y = value; }
-            }
+        /// <summary>
+        /// Y coordinate.
+        /// </summary>
+        [FakerTyper(TypeEnumCustom.COORDINATE_Y)]
+        public int Y
+        {
+            get { return y; }
+            set { y = value; }
+        }
         #endregion
 
         #region Methods

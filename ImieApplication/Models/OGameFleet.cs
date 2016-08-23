@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ImieApplication.Utils.Generator;
+using ImieApplication.Utils.Generator.Attributs;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -20,10 +22,9 @@ namespace ImieApplication.Models
         #endregion
 
         #region Attributs
-            private String name;
-            private DateTime landingAt;
-            private List<OGameSpaceShip> spaceShips;
-            private OGamePlanet destination;
+        private String name;
+        private DateTime landingAt;
+        private OGamePlanet destination;
         #endregion
 
         #region Conctructors
@@ -34,49 +35,40 @@ namespace ImieApplication.Models
         #endregion
 
         #region Properties
-            /// <summary>
-            /// Fleet name.
-            /// </summary>
-            public String Name
-            {
-                get { return name; }
-                set { name = value; }
-            }
+        /// <summary>
+        /// Fleet name.
+        /// </summary>
+        public String Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
 
-            /// <summary>
-            /// Define when fleet arrive to new planet.
-            /// </summary>
-            public DateTime LandingAt
-            {
-                get { return landingAt; }
-                set { landingAt = value; }
-            }
+        /// <summary>
+        /// Define when fleet arrive to new planet.
+        /// </summary>
+        [FakerTyper(TypeEnumCustom.DATETIME)]
+        public DateTime LandingAt
+        {
+            get { return landingAt; }
+            set { landingAt = value; }
+        }
 
-            /// <summary>
-            /// List of Spaceship.
-            /// </summary>
-            [InverseProperty("Fleet")]
-            public List<OGameSpaceShip> SpaceShips
-            {
-                get { return spaceShips; }
-                set { spaceShips = value; }
-            }
+        /// <summary>
+        /// Planet Id.
+        /// </summary>
+        [Column("DestinationId")]
+        public int? DestinationId { get; set; }
 
-            /// <summary>
-            /// Planet Id.
-            /// </summary>
-            [Column("DestinationId")]
-            public int? DestinationId { get; set; }
-
-            /// <summary>
-            /// Destination of the fleet.
-            /// </summary>
-            [ForeignKey("DestinationId")]
-            public OGamePlanet Destination
-            {
-                get { return destination; }
-                set { destination = value; }
-            }
+        /// <summary>
+        /// Destination of the fleet.
+        /// </summary>
+        [ForeignKey("DestinationId")]
+        public OGamePlanet Destination
+        {
+            get { return destination; }
+            set { destination = value; }
+        }
         #endregion
 
         #region Methods

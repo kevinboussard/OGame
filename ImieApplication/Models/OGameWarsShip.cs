@@ -22,10 +22,10 @@ namespace ImieApplication.Models
         #endregion
 
         #region Conctructors
-            /// <summary>
-            /// Default constructo.
-            /// </summary>
-            public OGameWarsShip(){ this.ShipType = 2; }
+        /// <summary>
+        /// Default constructo.
+        /// </summary>
+        public OGameWarsShip(){ this.ShipType = 2; }
         #endregion
 
         #region Properties

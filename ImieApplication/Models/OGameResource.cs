@@ -20,8 +20,8 @@ namespace ImieApplication.Models
         #endregion
 
         #region Attributs
-            private String type;
-            private int quantity;
+        private String type;
+        private int quantity;
         #endregion
 
         #region Conctructors
@@ -32,34 +32,34 @@ namespace ImieApplication.Models
         #endregion
 
         #region Properties
-            /// <summary>
-            /// PLanet Id.
-            /// </summary>
-            public int PlanetId { get; set; }
+        /// <summary>
+        /// PLanet Id.
+        /// </summary>
+        public int PlanetId { get; set; }
 
-            /// <summary>
-            /// Reference OGamePlanet for relation mapping.
-            /// </summary>
-            [ForeignKey("PlanetId")]
-            public OGamePlanet Planet { get; set; }
+        /// <summary>
+        /// Reference OGamePlanet for relation mapping.
+        /// </summary>
+        [ForeignKey("PlanetId")]
+        public OGamePlanet Planet { get; set; }
 
-            /// <summary>
-            /// Resource type name.
-            /// </summary>
-            public String Type
-            {
-                get { return type; }
-                set { type = value; }
-            }
+        /// <summary>
+        /// Resource type name.
+        /// </summary>
+        public String Type
+        {
+            get { return type; }
+            set { type = value; }
+        }
 
-            /// <summary>
-            /// Quantity of current resource.
-            /// </summary>
-            public int Quantity
-            {
-                get { return quantity; }
-                set { quantity = value; }
-            }
+        /// <summary>
+        /// Quantity of current resource.
+        /// </summary>
+        public int Quantity
+        {
+            get { return quantity; }
+            set { quantity = value; }
+        }
         #endregion
 
         #region Methods

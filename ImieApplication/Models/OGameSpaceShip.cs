@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ImieApplication.Utils.Generator;
+using ImieApplication.Utils.Generator.Attributs;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -10,7 +12,7 @@ namespace ImieApplication.Models
     /// <summary>
     /// Default class to create specialized space shit.
     /// </summary>
-    public abstract class OGameSpaceShip : DBBaseClass
+    public class OGameSpaceShip : DBBaseClass
     {
 
 
@@ -19,13 +21,13 @@ namespace ImieApplication.Models
         #endregion
 
         #region Attributs
-            private String name;
-            private int attack;
-            private int defence;
-            private int speed;
-            private int bay;
-            private int quantity;
-            private int shipType;
+        private String name;
+        private int attack;
+        private int defence;
+        private int speed;
+        private int bay;
+        private int quantity;
+        private int shipType;
         #endregion
 
         #region Conctructors
@@ -36,79 +38,76 @@ namespace ImieApplication.Models
         #endregion
 
         #region Properties
-            /// <summary>
-            /// Space Shit name.
-            /// </summary>
-            public String Name
-            {
-                get { return name; }
-                set { name = value; }
-            }
+        /// <summary>
+        /// Space Shit name.
+        /// </summary>
+        [FakerTyper(TypeEnumCustom.USERFIRSTNAME)]
+        public String Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
 
-            /// <summary>
-            /// Space shit attack.
-            /// </summary>
-            public int Attack
-            {
-                get { return attack; }
-                set { attack = value; }
-            }
+        /// <summary>
+        /// Space shit attack.
+        /// </summary>
+        [FakerTyper(TypeEnumCustom.SHIP_QUANTITY)]
+        public int Attack
+        {
+            get { return attack; }
+            set { attack = value; }
+        }
 
-            /// <summary>
-            /// Space shit Defence.
-            /// </summary>
-            public int Defence
-            {
-                get { return defence; }
-                set { defence = value; }
-            }
+        /// <summary>
+        /// Space shit Defence.
+        /// </summary>
+        [FakerTyper(TypeEnumCustom.SHIP_QUANTITY)]
+        public int Defence
+        {
+            get { return defence; }
+            set { defence = value; }
+        }
 
-            /// <summary>
-            /// Space shit speed.
-            /// </summary>
-            public int Speed
-            {
-                get { return speed; }
-                set { speed = value; }
-            }
+        /// <summary>
+        /// Space shit speed.
+        /// </summary>
+        [FakerTyper(TypeEnumCustom.SHIP_QUANTITY)]
+        public int Speed
+        {
+            get { return speed; }
+            set { speed = value; }
+        }
 
-            /// <summary>
-            /// Quantity of carriable resoucres allowed in a space shit.
-            /// </summary>
-            public int Bay
-            {
-                get { return bay; }
-                set { bay = value; }
-            }
+        /// <summary>
+        /// Quantity of carriable resoucres allowed in a space shit.
+        /// </summary>
+        [FakerTyper(TypeEnumCustom.SHIP_QUANTITY)]
+        public int Bay
+        {
+            get { return bay; }
+            set { bay = value; }
+        }
 
-            /// <summary>
-            /// Space ship quantity
-            /// </summary>
-            public int Quantity
-            {
-                get { return quantity; }
-                set { quantity = value; }
-            }
+        /// <summary>
+        /// Space ship quantity
+        /// </summary>
+        [FakerTyper(TypeEnumCustom.SHIP_QUANTITY)]
+        public int Quantity
+        {
+            get { return quantity; }
+            set { quantity = value; }
+        }
 
-            /// <summary>
-            /// Allow to reconize the different ship type in DB.
-            /// </summary>
-            public int ShipType
-            {
-                get { return shipType; }
-                set { shipType = value; }
-            }
+        /// <summary>
+        /// Allow to reconize the different ship type in DB.
+        /// </summary>
+        [FakerTyper(TypeEnumCustom.SHIP_TYPE)]
+        public int ShipType
+        {
+            get { return shipType; }
+            set { shipType = value; }
+        }
 
-            /// <summary>
-            /// Fleet Id.
-            /// </summary>
-            public int FleetId { get; set; }
-
-            /// <summary>
-            /// Reference OGameFleet for relation mapping.
-            /// </summary>
-            [ForeignKey("FleetId")]
-            public OGameFleet Fleet { get; set; }
         #endregion
 
         #region Methods

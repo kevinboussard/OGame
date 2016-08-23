@@ -23,10 +23,10 @@ namespace ImieApplication.Models
         #endregion
 
         #region Conctructors
-            /// <summary>
-            /// Default constructor.
-            /// </summary>
-            public OGameColonizer(){ this.ShipType = 1; }
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
+        public OGameColonizer(){ this.ShipType = 1; }
         #endregion
 
         #region Properties

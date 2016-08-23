@@ -18,10 +18,10 @@ namespace ImieApplication.Database
 
 
         #region Constantes
-            /// <summary>
-            /// Represent connection string in Web.config.
-            /// </summary>
-            public const string CONNECTION_NAME = "DefaultConnection";
+        /// <summary>
+        /// Represent connection string in Web.config.
+        /// </summary>
+        public const string CONNECTION_NAME = "DefaultConnection";
         #endregion
 
         #region Attributs
@@ -29,79 +29,93 @@ namespace ImieApplication.Database
         #endregion
 
         #region Conctructors
-            /// <summary>
-            /// Default constructor.
-            /// </summary>
-            public DatabaseManager() : base(CONNECTION_NAME)
-            {
-                 DBInitializer init = new DBInitializer(CONNECTION_NAME);
-            }
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
+        public DatabaseManager() : base(CONNECTION_NAME)
+        {
+                DBInitializer init = new DBInitializer(CONNECTION_NAME);
+        }
         #endregion
 
         #region Properties
-            /// <summary>
-            /// Represent DB table of T item.
-            /// </summary>
-            public DbSet<T> DbSetT { get; set; }
+        /// <summary>
+        /// Represent DB table of T item.
+        /// </summary>
+        public DbSet<T> DbSetT { get; set; }
         #endregion
 
         #region Methods
-            /// <summary>
-            /// Insert item in database replacing is id.
-            /// </summary>
-            /// <param name="item">Any item if it's a DBBaseClass.</param>
-            /// <returns>async Task containing the T item.</returns>
-            public async Task<T> Insert(T item)
-            {
+        /// <summary>
+        /// Insert item in database replacing is id.
+        /// </summary>
+        /// <param name="item">Any item if it's a DBBaseClass.</param>
+        /// <returns>async Task containing the T item.</returns>
+        public async Task<T> Insert(T item)
+        {
 
-                this.DbSetT.Add(item);
-                await this.SaveChangesAsync();
-                return item;
+            this.DbSetT.Add(item);
+            await this.SaveChangesAsync();
+            return item;
 
-            }
-
-
-            /// <summary>
-            /// Update item in database.
-            /// </summary>
-            /// <param name="item">Any item if it's a DBBaseClass.</param>
-            /// <returns>async Task containing the T item.</returns>
-            public async Task<T> Update(T item)
-            {
-
-                this.Entry<T>(item).State = EntityState.Modified;
-                await this.SaveChangesAsync();
-                return item;
-
-            }
+        }
 
 
-            /// <summary>
-            /// Delete item in database.
-            /// </summary>
-            /// <param name="item">Any item if it's a DBBaseClass.</param>
-            /// <returns>async Task containing integer value of suppress item.</returns>
-            public async Task<Int32> Delete(T item)
-            {
+        /// <summary>
+        /// Update item in database.
+        /// </summary>
+        /// <param name="item">Any item if it's a DBBaseClass.</param>
+        /// <returns>async Task containing the T item.</returns>
+        public async Task<T> Update(T item)
+        {
 
-                this.DbSetT.Attach(item);
-                this.DbSetT.Remove(item);
-                return await this.SaveChangesAsync();
+            this.Entry<T>(item).State = EntityState.Modified;
+            await this.SaveChangesAsync();
+            return item;
 
-            }
+        }
 
 
-            /// <summary>
-            /// Get item in database form its id.
-            /// </summary>
-            /// <param name="id">Id to select in DB.</param>
-            /// <returns>Selected item as a task of item type.</returns>
-            public async Task<T> Get(Int32 id)
-            {
+        /// <summary>
+        /// Delete item in database.
+        /// </summary>
+        /// <param name="item">Any item if it's a DBBaseClass.</param>
+        /// <returns>async Task containing integer value of suppress item.</returns>
+        public async Task<Int32> Delete(T item)
+        {
 
-                return await this.DbSetT.FindAsync(id);
+            this.DbSetT.Attach(item);
+            this.DbSetT.Remove(item);
+            return await this.SaveChangesAsync();
+
+        }
+
+
+        /// <summary>
+        /// Get item in database form its id.
+        /// </summary>
+        /// <param name="id">Id to select in DB.</param>
+        /// <returns>Selected item as a task of item type.</returns>
+        public async Task<T> Get(Int32 id)
+        {
+
+            return await this.DbSetT.FindAsync(id);
             
-            }
+        }
+
+        public async Task<IEnumerable<T>> Get()
+        {
+
+            DbSet<T> temp = default(DbSet<T>);
+            List<T> result = new List<T>();
+            await Task.Factory.StartNew(() =>
+            {
+                temp = base.Set<T>();
+            });
+            result.AddRange(temp);
+            return result;
+
+        }
         #endregion
 
         #region Events

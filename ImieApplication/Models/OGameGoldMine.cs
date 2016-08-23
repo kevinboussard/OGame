@@ -23,10 +23,10 @@ namespace ImieApplication.Models
         #endregion
 
         #region Conctructors
-            /// <summary>
-            /// Default constructor.
-            /// </summary>
-            public OGameGoldMine(){ this.BuildingType = 2; }
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
+        public OGameGoldMine(){ this.BuildingType = 2; }
         #endregion
 
         #region Properties
